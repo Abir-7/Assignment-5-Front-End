@@ -9,7 +9,7 @@ export type TRoute = {
 export const routeGenerator = (routes: IRouteOption[]) => {
   const finalRoutes = routes.reduce((acc: TRoute[], item) => {
     console.log(item);
-    if (item.name && item.element) {
+    if (item.path && item.element) {
       acc.push({ path: item.path, element: item.element });
     }
     if (item.children) {

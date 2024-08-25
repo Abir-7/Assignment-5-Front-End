@@ -1,6 +1,32 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { sideNavLinkGenerator } from "../../utils/sideNavLinkGenerator";
+import { userOption } from "../../router/userRouter";
+
+const userRole = {
+  ADMIN: "admin",
+  FACULTY: "faculty",
+  USER: "user",
+};
 
 const DashboardLayout = () => {
+  const role = "user";
+  let sideBarItems;
+  switch (role) {
+    // case userRole.ADMIN:
+    //   sideBarItems =sideNavLinkGenerator(adminOption, userRole.ADMIN);
+    //   break;
+    // case userRole.FACULTY:
+    //   sideBarItems = sideNavLinkGenerator(facultyOption, userRole.FACULTY);
+    //   break;
+    case userRole.USER:
+      sideBarItems = sideNavLinkGenerator(userOption, userRole.USER);
+      break;
+
+    default:
+      break;
+  }
+  console.log(sideBarItems, "gg");
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -11,22 +37,32 @@ const DashboardLayout = () => {
         >
           {">"}
         </label>
-        <Outlet></Outlet>
+        <div className="">
+          <Outlet></Outlet>
+        </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side pe-0 lg:pe-1">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu text-white bg-gray-950  min-h-full w-80 p-4">
-          {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
+        <ul className=" menu gap-5 text-white bg-gray-950  min-h-full w-80 p-4">
+          {" "}
+          <Link
+            className="text-black rounded-md font-medium p-2 bg-white"
+            to="/"
+          >
+            Home
+          </Link>
+          {sideBarItems?.map((item) => (
+            <Link
+              className="text-black p-2 font-medium rounded-md bg-white"
+              to={item?.label as string}
+            >
+              {item?.key}
+            </Link>
+          ))}
         </ul>
       </div>
     </div>

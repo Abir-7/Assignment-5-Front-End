@@ -4,6 +4,7 @@ import Homepage from "../pages/HomePage/Homepage";
 import DashboardLayout from "../layout/dashboard/DashboardLayout";
 import { routeGenerator } from "../utils/routeGenerator";
 import { userOption } from "./userRouter";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 export const router = createBrowserRouter([
   {
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
     path: "/user",
     element: <DashboardLayout></DashboardLayout>,
     children: routeGenerator(userOption),
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   },
 ]);

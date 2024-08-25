@@ -5,7 +5,7 @@ export interface IRoutOptionChildItem {
 }
 export interface IRouteOption {
   name: string;
-  path: string;
+  path?: string;
   element?: JSX.Element;
   children?: IRoutOptionChildItem[];
 }
