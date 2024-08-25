@@ -4,14 +4,14 @@ const DashboardLayout = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
-        <Outlet></Outlet>
+      <div className="drawer-content   ">
         <label
           htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
+          className=" absolute flex justify-center items-center h-10 w-10 rounded-md bg-red-300 left-0 me-auto lg:hidden"
         >
-          Open drawer
+          {">"}
         </label>
+        <Outlet></Outlet>
       </div>
       <div className="drawer-side">
         <label
@@ -19,7 +19,7 @@ const DashboardLayout = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <ul className="menu text-white bg-gray-950  min-h-full w-80 p-4">
           {/* Sidebar content here */}
           <li>
             <a>Sidebar Item 1</a>
