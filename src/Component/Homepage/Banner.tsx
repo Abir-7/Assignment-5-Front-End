@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Banner = () => {
   return (
     <>
-      <Carousel className="h-[80vh]">
+      <Carousel showThumbs={false} className="h-[80vh]">
         <div
           className="h-[80vh] flex items-center justify-center"
           style={{

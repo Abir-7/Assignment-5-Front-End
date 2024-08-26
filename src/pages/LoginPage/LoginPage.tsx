@@ -2,9 +2,21 @@ import { FieldValues } from "react-hook-form";
 import Form from "../../Component/form/Form";
 import Input from "../../Component/form/Input";
 import img from "../../assets/image/login.jpg";
+import { useLoginMutation } from "../../redux/Api/authApi/authApi";
+import { IRespone } from "../../redux/InterfaceForRedux/apiRespone.interface";
+import { IAuthData } from "../../redux/InterfaceForRedux/authApi.interface";
+import { toast } from "sonner";
 const LoginPage = () => {
+  const [userLogin] = useLoginMutation();
   const onFormSubmit = async (data: FieldValues) => {
     console.log(data);
+    const res = (await userLogin(data)) as IRespone<IAuthData>;
+
+    if (res.data?.success) {
+      toast.success(res.data.message);
+    } else {
+      toast.success(res.error?.data.message);
+    }
   };
   return (
     <div
