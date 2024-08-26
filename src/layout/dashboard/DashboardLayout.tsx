@@ -57,6 +57,7 @@ const DashboardLayout = () => {
           </Link>
           {sideBarItems?.map((item) => (
             <Link
+              key={item?.label}
               className="text-black p-2 font-medium rounded-md bg-white"
               to={item?.label as string}
             >

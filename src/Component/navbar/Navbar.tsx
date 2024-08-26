@@ -1,33 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logout } from "../../redux/feature/userSlice/authSlice";
 
 const Navbar = () => {
-  const role = "user";
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.authData);
+
   const navLinks = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "bg-slate-100 text-black px-3 py-2 rounded" : "px-3 py-2"
+          } // Apply styles based on active state
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <details>
-          <summary>Parents</summary>
-          <ul className="p-2 z-20 bg-slate-950">
-            <li>
-              <a>Submenu 1</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
-          </ul>
-        </details>
+        <NavLink
+          to="/facilities"
+          className={({ isActive }) =>
+            isActive ? "bg-slate-100 text-black px-3 py-2 rounded" : "px-3 py-2"
+          } // Apply styles based on active state
+        >
+          Facilities
+        </NavLink>
       </li>
-      <li>
-        <Link to={`/${role}/dashboard`}>Dashboard</Link>
-      </li>
+      {user && (
+        <li>
+          <NavLink
+            to={`/${user.role}/dashboard`}
+            className={({ isActive }) =>
+              isActive
+                ? "bg-slate-100 text-black px-3 py-2 rounded"
+                : "px-3 py-2"
+            } // Apply styles based on active state
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
-    <div className="navbar bg-slate-950 text-white">
+    <div className="navbar  bg-slate-950 text-white">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,12 +74,23 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 ">{navLinks}</ul>
+        <ul className="flex gap-10 px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"} className="btn btn-sm">
-          Login
-        </Link>
+        {user?.email ? (
+          <button
+            onClick={() => {
+              dispatch(logout());
+            }}
+            className="btn btn-sm"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to={"/login"} className="btn btn-sm">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

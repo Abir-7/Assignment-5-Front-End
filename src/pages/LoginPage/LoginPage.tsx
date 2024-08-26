@@ -6,7 +6,14 @@ import { useLoginMutation } from "../../redux/Api/authApi/authApi";
 import { IRespone } from "../../redux/InterfaceForRedux/apiRespone.interface";
 import { IAuthData } from "../../redux/InterfaceForRedux/authApi.interface";
 import { toast } from "sonner";
+import { decodeToken } from "../../utils/decodeToken";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser } from "../../redux/feature/userSlice/authSlice";
+import { useNavigate } from "react-router-dom";
+
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [userLogin] = useLoginMutation();
   const onFormSubmit = async (data: FieldValues) => {
     console.log(data);
@@ -14,6 +21,10 @@ const LoginPage = () => {
 
     if (res.data?.success) {
       toast.success(res.data.message);
+      const tokenData = decodeToken(res.data.data.token);
+      console.log(tokenData);
+      dispatch(setUser({ user: tokenData, token: res.data.data.token }));
+      navigate("/");
     } else {
       toast.success(res.error?.data.message);
     }

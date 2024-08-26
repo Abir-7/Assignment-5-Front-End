@@ -1,52 +1,116 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from "react";
+import { useCencelBookingMutation } from "../../../redux/Api/bookingApi/bookingApi";
+import { IRespone } from "../../../redux/InterfaceForRedux/apiRespone.interface";
+import { toast } from "sonner";
+import { Link } from "react-router-dom";
+interface Facility {
+  _id: string;
+  name: string;
+  description: string;
+  pricePerHour: number;
+  location: string;
+  isDeleted: boolean;
+  __v: number;
+}
 
-const Table = () => {
+interface User {
+  email: string;
+  _id: string;
+  __v: number;
+}
+
+interface Booking {
+  date: string;
+  endTime: string;
+  facility: Facility;
+  isBooked: string;
+  payableAmount: number;
+  startTime: string;
+  user: User;
+  _id: string;
+  __v: number;
+}
+
+const Table = ({ data }: { data: Booking[] }) => {
+  const [bookingId, setBookingId] = useState("");
+  const [cencelBooking] = useCencelBookingMutation();
+  const handleCencel = async () => {
+    console.log(bookingId);
+    const res = (await cencelBooking(bookingId)) as IRespone<any>;
+    console.log(res);
+    if (res.data?.success) {
+      toast.success(res.data.message);
+    }
+    if (res.error) {
+      toast.error(res.error.data.message);
+    }
+    setBookingId("");
+  };
   return (
     <div className="overflow-x-auto">
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <p className="py-4 text-xl font-bold">Are You Sure?</p>
+
+          <div className="modal-action">
+            <form method="dialog" className=" flex gap-3">
+              <button onClick={() => handleCencel()} className="btn btn-sm">
+                Yes
+              </button>
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm">Cencel</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
       <table className="table">
         {/* head */}
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Facility Name</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
-          <tr>
-            <td>
-              <div className="flex items-center gap-3">
-                <div className="avatar">
-                  <div className="mask mask-squircle h-12 w-12">
-                    <img
-                      src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                      alt="Avatar Tailwind CSS Component"
-                    />
-                  </div>
+          {data?.map((item, i) => (
+            <tr key={i}>
+              <td>{item.facility.name}</td>
+              <td>{item.user.email}</td>
+              <td>{item.date}</td>
+              <td>{item.startTime}</td>
+              <td>{item.endTime}</td>
+              <td>
+                {" "}
+                <div className="flex gap-2">
+                  <Link
+                    to={`/user/booking-details/${item._id}`}
+                    className="btn btn-sm"
+                  >
+                    Details
+                  </Link>
+                  <button
+                    onClick={() => {
+                      const modal = document.getElementById(
+                        "my_modal_5"
+                      ) as HTMLDialogElement | null;
+                      modal?.showModal();
+                      setBookingId(item._id);
+                    }}
+                    className="btn btn-sm"
+                    disabled={item.isBooked === "canceled"}
+                  >
+                    Cancel
+                  </button>
                 </div>
-                <div>
-                  <div className="font-bold">Hart Hagerty</div>
-                  <div className="text-sm opacity-50">United States</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              Zemlak, Daniel and Leannon
-              <br />
-              <span className="badge badge-ghost badge-sm">
-                Desktop Support Technician
-              </span>
-            </td>
-            <td>Purple</td>
-            <td>
-              {" "}
-              <div>
-                <button className="btn btn-sm">details</button>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          ))}
         </tbody>
         {/* foot */}
       </table>
