@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Facilities from "../pages/FacilityPage/Facilities";
 import FacilityDetails from "../pages/FacilityPage/FacilityDetails";
 import BookFacility from "../pages/FacilityPage/BookFacility";
+import Notfound from "../pages/NotFound/Notfound";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
             <FacilityDetails />
           </ProtectedRoute>
         ),
+        errorElement: <Notfound></Notfound>,
       },
       {
         path: "/facility/:id/booking",
@@ -57,5 +59,9 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "*",
+    element: <Notfound />,
   },
 ]);

@@ -26,7 +26,12 @@ const Card = ({ info }: { info: Facility }) => {
           <div className=" ">{info?.location}</div>
         </div>
         <div className="flex flex-col gap-3 ">
-          <button className="btn btn-sm w-full">Book Now</button>
+          <Link
+            to={`/facility/${info?._id}/booking`}
+            className="btn btn-sm w-full"
+          >
+            Book Now
+          </Link>
           <Link to={`/faiclity/${info?._id}`} className="btn btn-sm w-full">
             View Details
           </Link>

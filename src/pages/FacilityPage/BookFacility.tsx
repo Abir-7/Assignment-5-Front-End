@@ -1,49 +1,156 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
-import { useGetSingleFacilityQuery } from "../../redux/Api/FacilityApi/facilityApi";
+import {
+  useBookingFacilityMutation,
+  useGetSingleFacilityQuery,
+  useLazyCheckAvailabilityQuery,
+} from "../../redux/Api/FacilityApi/facilityApi";
 import Form from "../../Component/form/Form";
 import Input from "../../Component/form/Input";
 import { FieldValues } from "react-hook-form";
+import { useState } from "react";
+import InputWithState from "../../Component/form/InputWithState";
+import { toast } from "sonner";
+import { IRespone } from "../../redux/InterfaceForRedux/apiRespone.interface";
 
 const BookFacility = () => {
   const { id } = useParams();
   const { data } = useGetSingleFacilityQuery(id!, { skip: !id });
-  console.log(data, "ggggg");
+
+  const [bookingFacility] = useBookingFacilityMutation();
+
+  const [checkAvailability, { data: availableTime }] =
+    useLazyCheckAvailabilityQuery();
   const onFormSubmit = async (data: FieldValues) => {
     console.log(data);
+    const res = (await bookingFacility({
+      ...data,
+      facility: id,
+    })) as IRespone<any>;
+    console.log(res, "bok");
+    if (res?.data) {
+      toast.success(res?.data?.message);
+    }
+    if (res?.error) {
+      toast.error(res.error?.data?.message);
+    }
   };
+  const [date, setDate] = useState("");
+
+  const checkAvailableTime = async () => {
+    const facility = id;
+
+    if (!date) {
+      toast.error("Select Date");
+    }
+    const res = (await checkAvailability([
+      { name: "date", value: date },
+      { name: "facility", value: facility as string },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ])) as IRespone<any>;
+    if (res.data) {
+      if (res?.data?.data?.length == 0) {
+        toast.error("No Time Slote Available");
+      }
+    }
+    if (res.error) {
+      toast.error(res?.error?.data?.message);
+    }
+    console.log(res);
+  };
+  console.log(availableTime);
   return (
-    <div className="flex justify-center min-h-[60vh] items-center">
-      <div className="card">
-        <div className="border p-4 border-slate-950">
-          <h1 className="text-xl font-semibold">
-            Facility Name : {data?.data?.name}
-          </h1>
+    <>
+      {id == "undefined" ? (
+        <p className="text-xl font-bold text-center mt-20">Nothing to show</p>
+      ) : (
+        <div className="flex justify-center min-h-[60vh] mt-20 items-center">
+          <div className="card ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
+                <div className="border p-4 border-slate-950">
+                  <h1 className="text-xl text-center font-semibold">
+                    Facility Name : {data?.data?.name}
+                  </h1>
+                </div>
+                <Form onFormSubmit={onFormSubmit}>
+                  <Input
+                    label="Start Time"
+                    type="time"
+                    name="startTime"
+                    errorMsg="Start Time Required"
+                  ></Input>
+                  <Input
+                    label="End Time"
+                    type="time"
+                    name="endTime"
+                    errorMsg="End Time Required"
+                  ></Input>
+                  <InputWithState
+                    setDate={setDate}
+                    label="Date"
+                    type="date"
+                    name="date"
+                    errorMsg="Date is Required"
+                  ></InputWithState>
+                  <div className="flex flex-col ">
+                    <button className="my-5 btn btn-sm" type="submit">
+                      Confirm
+                    </button>
+                  </div>
+                </Form>
+                <button
+                  onClick={() => checkAvailableTime()}
+                  className="my-5 w-full btn relative btn-sm"
+                  type="submit"
+                >
+                  Check Availability{" "}
+                  <div
+                    className="tooltip  tooltip-left md:tooltip-top absolute right-3 p-1 w-5 h-5 flex justify-center items-center rounded-full bg-slate-950 text-white"
+                    data-tip="Check Availability before booking. Select date then check."
+                  >
+                    ?
+                  </div>{" "}
+                </button>
+              </div>
+              <div>
+                <div className="border p-4 border-slate-950">
+                  <h1 className="text-xl text-center font-semibold">
+                    Available Time
+                  </h1>
+                </div>
+                {availableTime && (
+                  <>
+                    {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      availableTime.data.map((item: any, i: number) => {
+                        return (
+                          <div
+                            className="border flex gap-5 justify-center my-2"
+                            key={i}
+                          >
+                            <div>
+                              <span>Start Time: </span>
+                              <span className="font-bold">
+                                {item.startTime}
+                              </span>
+                            </div>
+                            <div>
+                              <span>End Time: </span>
+                              <span className="font-bold">{item.endTime}</span>
+                            </div>
+                          </div>
+                        );
+                      })
+                    }
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <Form onFormSubmit={onFormSubmit}>
-            <Input
-              label="Start Time"
-              type="time"
-              name="startTime"
-              errorMsg="Start Time Required"
-            ></Input>
-            <Input
-              label="End Time"
-              type="time"
-              name="endTime"
-              errorMsg="End Time Required"
-            ></Input>
-            <Input
-              label="Date"
-              type="date"
-              name="date"
-              errorMsg="Date is Required"
-            ></Input>
-            <button type="submit">Confirm</button>
-          </Form>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
