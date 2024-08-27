@@ -9,7 +9,7 @@ const ContactForm = () => {
     console.log(data);
   };
   return (
-    <div>
+    <div className="w-full">
       <Form onFormSubmit={onFormSubmit}>
         <Input
           name="name"

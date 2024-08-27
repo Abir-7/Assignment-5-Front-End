@@ -1,5 +1,5 @@
 const ContactDetails = () => (
-  <section className="p-6 bg-base-200 rounded-lg shadow-md mt-6">
+  <section className="p-6  rounded-lg mt-6 w-full">
     <h2 className="text-2xl font-bold mb-4">Contact Details</h2>
     <p>
       <strong>Office Address:</strong> 123 Main Street, City, Country

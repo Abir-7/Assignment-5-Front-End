@@ -11,6 +11,7 @@ import FacilityDetails from "../pages/FacilityPage/FacilityDetails";
 import BookFacility from "../pages/FacilityPage/BookFacility";
 import Notfound from "../pages/NotFound/Notfound";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import ContactUsPage from "../pages/ContactUs/ContactUsPage";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUsPage />,
       },
     ],
   },
