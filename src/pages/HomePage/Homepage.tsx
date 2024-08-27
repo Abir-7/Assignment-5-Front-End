@@ -1,6 +1,7 @@
 import Card from "../../Component/common/Card";
 import SectionHeder from "../../Component/common/SectionHeder";
 import Banner from "../../Component/Homepage/Banner";
+import Testimonials from "../../Component/Homepage/Testimonials";
 import Timeline from "../../Component/Homepage/Timeline";
 
 const Homepage = () => {
@@ -13,6 +14,7 @@ const Homepage = () => {
       </div>
       <SectionHeder text={"Process Overview"}></SectionHeder>
       <Timeline></Timeline>
+      <Testimonials></Testimonials>
     </div>
   );
 };
