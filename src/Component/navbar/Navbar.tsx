@@ -42,6 +42,16 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
+      <li>
+        <NavLink
+          to="/about-us"
+          className={({ isActive }) =>
+            isActive ? "bg-slate-100 text-black px-3 py-2 rounded" : "px-3 py-2"
+          } // Apply styles based on active state
+        >
+          About Us
+        </NavLink>
+      </li>
     </>
   );
   return (

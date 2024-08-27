@@ -10,6 +10,7 @@ import Facilities from "../pages/FacilityPage/Facilities";
 import FacilityDetails from "../pages/FacilityPage/FacilityDetails";
 import BookFacility from "../pages/FacilityPage/BookFacility";
 import Notfound from "../pages/NotFound/Notfound";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             <BookFacility />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
     ],
   },
