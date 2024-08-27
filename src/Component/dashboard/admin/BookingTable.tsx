@@ -1,0 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useGetAllBookingQuery } from "../../../redux/Api/bookingApi/bookingApi";
+
+export const BookingTable = () => {
+  const { data } = useGetAllBookingQuery("");
+  return (
+    <div className="overflow-x-auto">
+      <table className="table">
+        {/* head */}
+        <thead>
+          <tr>
+            <th>Facility Name</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* row 1 */}
+          {data?.data?.map((item: any, i: string) => (
+            <tr key={i}>
+              <td>{item.facility.name}</td>
+              <td>{item.user.email}</td>
+              <td>{item.date}</td>
+              <td>{item.startTime}</td>
+              <td>{item.endTime}</td>
+            </tr>
+          ))}
+        </tbody>
+        {/* foot */}
+      </table>
+    </div>
+  );
+};

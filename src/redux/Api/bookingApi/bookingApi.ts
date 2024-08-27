@@ -8,6 +8,12 @@ const bookingAApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getAllBooking: builder.query({
+      query: () => ({
+        url: "/bookings",
+        method: "GET",
+      }),
+    }),
     cencelBooking: builder.mutation({
       query: (id: string) => ({
         url: `/bookings/${id}`,
@@ -27,4 +33,5 @@ export const {
   useGetUsersBookingQuery,
   useCencelBookingMutation,
   useGetSingleBookingDataQuery,
+  useGetAllBookingQuery,
 } = bookingAApi;

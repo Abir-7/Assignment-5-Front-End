@@ -4,10 +4,10 @@ interface InputProps {
   name: string;
   label: string;
   errorMsg?: string | false;
-  type: string;
+  options: { value: string; label: string }[]; // Add options for select input
 }
 
-const Input = ({ name, label, errorMsg, type }: InputProps) => {
+const SelectInput = ({ name, label, errorMsg, options }: InputProps) => {
   const { control } = useFormContext();
   return (
     <div>
@@ -21,12 +21,22 @@ const Input = ({ name, label, errorMsg, type }: InputProps) => {
               <label className="label">
                 <span className="label-text">{label}</span>
               </label>
-              <input
-                className="input  input-sm input-bordered"
+              {/* Replace input with select */}
+              <select
+                className="input input-sm input-bordered"
                 {...field}
                 value={field.value || ""}
-                type={type}
-              />
+              >
+                <option key={null} value={""}>
+                  Select Gender
+                </option>
+                {/* Map over options */}
+                {options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {error && <p className="text-red-500">{error.message}</p>}
@@ -37,4 +47,4 @@ const Input = ({ name, label, errorMsg, type }: InputProps) => {
   );
 };
 
-export default Input;
+export default SelectInput;

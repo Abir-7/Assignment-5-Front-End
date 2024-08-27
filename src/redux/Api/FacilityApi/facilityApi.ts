@@ -2,6 +2,13 @@ import { baseApi } from "../baseApi";
 
 const bookingAApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    createFacility: builder.mutation({
+      query: (data) => ({
+        url: "/facility",
+        method: "POST",
+        body: data,
+      }),
+    }),
     getAllFacility: builder.query({
       query: () => ({
         url: "/facility",
@@ -14,6 +21,19 @@ const bookingAApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    updateFacility: builder.mutation({
+      query: (data) => ({
+        url: `/facility/${data.id}`,
+        method: "PUT",
+        body: data.data,
+      }),
+    }),
+    deleteFacility: builder.mutation({
+      query: (data) => {
+        return { url: `/facility/${data.id}`, method: "DELETE" };
+      },
+    }),
+
     checkAvailability: builder.query({
       query: (arg: { name: string; value: string }[]) => {
         const params = new URLSearchParams();
@@ -44,4 +64,7 @@ export const {
   useCheckAvailabilityQuery,
   useLazyCheckAvailabilityQuery,
   useBookingFacilityMutation,
+  useUpdateFacilityMutation,
+  useDeleteFacilityMutation,
+  useCreateFacilityMutation,
 } = bookingAApi;

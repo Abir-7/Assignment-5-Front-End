@@ -30,7 +30,7 @@ const DashboardLayout = () => {
     default:
       break;
   }
-  console.log(sideBarItems, "kk");
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -83,9 +83,9 @@ const DashboardLayout = () => {
               return (
                 <details>
                   <summary className="px-3 py-2 bg-slate-700 rounded">
-                    Facility Management
+                    {item.label}
                   </summary>
-                  <ul className="mt-4">
+                  <ul className="mt-4 grid gap-3 w-2/3">
                     {item.children.map((item, i) => (
                       <NavLink
                         key={i}
