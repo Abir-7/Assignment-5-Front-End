@@ -22,12 +22,11 @@ const BookFacility = () => {
   const [checkAvailability, { data: availableTime }] =
     useLazyCheckAvailabilityQuery();
   const onFormSubmit = async (data: FieldValues) => {
-    console.log(data);
     const res = (await bookingFacility({
       ...data,
       facility: id,
     })) as IRespone<any>;
-    console.log(res, "bok");
+
     if (res?.data) {
       toast.success(res?.data?.message);
     }
@@ -56,9 +55,8 @@ const BookFacility = () => {
     if (res.error) {
       toast.error(res?.error?.data?.message);
     }
-    console.log(res);
   };
-  console.log(availableTime);
+
   return (
     <>
       {id == "undefined" ? (

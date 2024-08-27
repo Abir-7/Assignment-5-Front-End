@@ -11,7 +11,7 @@ export const sideNavLinkGenerator = (routes: IRouteOption[], role: string) => {
     if (item.path && item.element && item.name) {
       acc.push({
         key: item.name,
-        label: `/${role}/${item.path}`,
+        label: `/${role}/${item.path}`, //we can use Link or Navlink here
       });
     }
     if (item.children) {
@@ -22,7 +22,7 @@ export const sideNavLinkGenerator = (routes: IRouteOption[], role: string) => {
           if (child.name) {
             return {
               key: child.name,
-              label: `/${role}/${child.path}`,
+              label: `/${role}/${child.path}`, //we can use Link or Navlink here
             };
           } else {
             return null;

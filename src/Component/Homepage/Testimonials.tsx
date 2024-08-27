@@ -26,7 +26,7 @@ const Testimonials = () => {
     slides: { perView: 1, spacing: 15 },
   });
   const { data, isLoading } = useGetAllTestimonialQuery(null);
-  console.log(data);
+
   return (
     <div className="grid grid-cols-1  md:grid-cols-3 gap-5 items-center container mx-auto my-10">
       <div className="col-span-1 mx-2">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
 
 import { useGetSingleBookingDataQuery } from "../../redux/Api/bookingApi/bookingApi";
@@ -9,6 +10,8 @@ import "@smastrom/react-rating/style.css";
 
 import { useAppSelector } from "../../redux/hooks";
 import { useAddTestimonialMutation } from "../../redux/Api/testimonialApi/testimonialApi";
+import { IRespone } from "../../redux/InterfaceForRedux/apiRespone.interface";
+import { toast } from "sonner";
 
 const BookingDetails = () => {
   const { user } = useAppSelector((state) => state.authData);
@@ -21,14 +24,18 @@ const BookingDetails = () => {
     setComment(e.target.value);
   };
   const handleSubmit = async () => {
-    console.log(rating, comment, id, user?.id);
-    const res = await addTestimonial({
+    const res = (await addTestimonial({
       bookingId: id,
       user: user?.id,
       rating,
       comment,
-    });
-    console.log(res);
+    })) as IRespone<any>;
+    if (res.data) {
+      toast.success(res.data.message);
+    }
+    if (res.error) {
+      toast.success(res.error.data.message);
+    }
   };
 
   return (

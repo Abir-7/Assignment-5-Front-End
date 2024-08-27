@@ -12,6 +12,8 @@ import BookFacility from "../pages/FacilityPage/BookFacility";
 import Notfound from "../pages/NotFound/Notfound";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUsPage from "../pages/ContactUs/ContactUsPage";
+import { adminOption } from "./adminRoute";
+import ProtectedRouteTwo from "./ProtectedRouteTwo";
 
 export const router = createBrowserRouter([
   {
@@ -25,24 +27,24 @@ export const router = createBrowserRouter([
       {
         path: "/facilities",
         element: (
-          <ProtectedRoute>
+          <ProtectedRouteTwo>
             <Facilities />
-          </ProtectedRoute>
+          </ProtectedRouteTwo>
         ),
       },
       {
         path: "faiclity/:id",
         element: (
-          <ProtectedRoute>
+          <ProtectedRouteTwo>
             <FacilityDetails />
-          </ProtectedRoute>
+          </ProtectedRouteTwo>
         ),
         errorElement: <Notfound></Notfound>,
       },
       {
         path: "/facility/:id/booking",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="user">
             <BookFacility />
           </ProtectedRoute>
         ),
@@ -60,11 +62,20 @@ export const router = createBrowserRouter([
   {
     path: "/user",
     element: (
-      <ProtectedRoute>
+      <ProtectedRoute role="user">
         <DashboardLayout></DashboardLayout>
       </ProtectedRoute>
     ),
     children: routeGenerator(userOption),
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute role="admin">
+        <DashboardLayout></DashboardLayout>
+      </ProtectedRoute>
+    ),
+    children: routeGenerator(adminOption),
   },
   {
     path: "/login",

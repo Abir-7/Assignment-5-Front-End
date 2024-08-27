@@ -1,6 +1,9 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { sideNavLinkGenerator } from "../../utils/sideNavLinkGenerator";
 import { userOption } from "../../router/userRouter";
+
+import { useAppSelector } from "../../redux/hooks";
+import { adminOption } from "../../router/adminRoute";
 
 const userRole = {
   ADMIN: "admin",
@@ -9,12 +12,14 @@ const userRole = {
 };
 
 const DashboardLayout = () => {
-  const role = "user";
+  const { user } = useAppSelector((state) => state.authData);
+
   let sideBarItems;
-  switch (role) {
-    // case userRole.ADMIN:
-    //   sideBarItems =sideNavLinkGenerator(adminOption, userRole.ADMIN);
-    //   break;
+
+  switch (user?.role) {
+    case userRole.ADMIN:
+      sideBarItems = sideNavLinkGenerator(adminOption, userRole.ADMIN);
+      break;
     // case userRole.FACULTY:
     //   sideBarItems = sideNavLinkGenerator(facultyOption, userRole.FACULTY);
     //   break;
@@ -25,8 +30,7 @@ const DashboardLayout = () => {
     default:
       break;
   }
-  console.log(sideBarItems, "gg");
-
+  console.log(sideBarItems, "kk");
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -49,21 +53,58 @@ const DashboardLayout = () => {
         ></label>
         <ul className=" menu gap-5 text-white bg-gray-950  min-h-full w-80 p-4">
           {" "}
-          <Link
-            className="text-black rounded-md font-medium p-2 bg-white"
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "bg-slate-100 text-black px-3 py-2 rounded"
+                : "px-3 py-2 bg-slate-700 rounded"
+            } // Apply styles based on active state
             to="/"
           >
             Home
-          </Link>
-          {sideBarItems?.map((item) => (
-            <Link
-              key={item?.label}
-              className="text-black p-2 font-medium rounded-md bg-white"
-              to={item?.label as string}
-            >
-              {item?.key}
-            </Link>
-          ))}
+          </NavLink>
+          {sideBarItems?.map((item, i) => {
+            if (!item?.children) {
+              return (
+                <NavLink
+                  key={i}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-slate-100 text-black px-3 py-2 rounded"
+                      : "px-3 py-2 bg-slate-700 rounded"
+                  }
+                  to={item?.label as string}
+                >
+                  {item?.key}
+                </NavLink>
+              );
+            }
+            if (item?.children) {
+              return (
+                <details>
+                  <summary className="px-3 py-2 bg-slate-700 rounded">
+                    Facility Management
+                  </summary>
+                  <ul className="mt-4">
+                    {item.children.map((item, i) => (
+                      <NavLink
+                        key={i}
+                        className={({ isActive }) =>
+                          isActive
+                            ? "bg-slate-100  text-black px-3 py-2 rounded"
+                            : "px-3  py-2 bg-slate-700 rounded"
+                        }
+                        to={item?.label as string}
+                      >
+                        {item?.key}
+                      </NavLink>
+                    ))}
+                  </ul>
+                </details>
+              );
+            }
+            return "";
+          })}
         </ul>
       </div>
     </div>

@@ -21,7 +21,7 @@ const TextAria = ({ name, label, errorMsg }: InputProps) => {
                 <span className="label-text">{label}</span>
               </label>
               <textarea
-                className="input  input-sm input-bordered"
+                className="input h-9 input-sm input-bordered"
                 {...field}
                 value={field.value || ""}
               />

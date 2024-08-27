@@ -36,9 +36,8 @@ const Table = ({ data }: { data: Booking[] }) => {
   const [bookingId, setBookingId] = useState("");
   const [cencelBooking] = useCencelBookingMutation();
   const handleCencel = async () => {
-    console.log(bookingId);
     const res = (await cencelBooking(bookingId)) as IRespone<any>;
-    console.log(res);
+
     if (res.data?.success) {
       toast.success(res.data.message);
     }

@@ -1,4 +1,3 @@
-import React from "react";
 import Form from "../../Component/form/Form";
 import { FieldValues } from "react-hook-form";
 import Input from "../../Component/form/Input";
@@ -30,11 +29,11 @@ const ContactForm = () => {
           type="text"
         ></Input>
         <TextAria
-          name="subject"
-          errorMsg="Subject Requierd"
-          label="Subject"
+          name="message"
+          errorMsg="Message Requierd"
+          label="Message"
         ></TextAria>
-        <button className="btn btn-sm">Submit</button>
+        <button className="btn btn-sm mt-5">Submit</button>
       </Form>
     </div>
   );

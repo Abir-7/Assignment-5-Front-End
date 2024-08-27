@@ -5,6 +5,9 @@ import { logout } from "../../redux/feature/userSlice/authSlice";
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.authData);
+  // const { role } = decodeToken((token as string) || "") as JwtPayload & {
+  //   role: string;
+  // };
 
   const navLinks = (
     <>
@@ -31,7 +34,7 @@ const Navbar = () => {
       {user && (
         <li>
           <NavLink
-            to={`/${user.role}/dashboard`}
+            to={`/${user?.role}/dashboard`}
             className={({ isActive }) =>
               isActive
                 ? "bg-slate-100 text-black px-3 py-2 rounded"

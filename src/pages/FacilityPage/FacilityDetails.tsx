@@ -9,8 +9,6 @@ const FacilityDetails = () => {
     skip: id == "undefined" || undefined,
   });
 
-  console.log(id);
-
   return (
     <>
       {id == "undefined" ? (

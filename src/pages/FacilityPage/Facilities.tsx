@@ -6,7 +6,7 @@ import { Facility } from "./facility.interface";
 
 const Facilities = () => {
   const { data } = useGetAllFacilityQuery(null);
-  console.log(data);
+
   return (
     <div>
       <SectionHeder text="All Facilities"></SectionHeder>

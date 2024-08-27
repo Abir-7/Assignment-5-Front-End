@@ -16,13 +16,12 @@ const LoginPage = () => {
   const dispatch = useAppDispatch();
   const [userLogin] = useLoginMutation();
   const onFormSubmit = async (data: FieldValues) => {
-    console.log(data);
     const res = (await userLogin(data)) as IRespone<IAuthData>;
 
     if (res.data?.success) {
       toast.success(res.data.message);
       const tokenData = decodeToken(res.data.data.token);
-      console.log(tokenData);
+
       dispatch(setUser({ user: tokenData, token: res.data.data.token }));
       navigate("/");
     } else {

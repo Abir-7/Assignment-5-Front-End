@@ -8,7 +8,6 @@ export type TRoute = {
 
 export const routeGenerator = (routes: IRouteOption[]) => {
   const finalRoutes = routes.reduce((acc: TRoute[], item) => {
-    console.log(item);
     if (item.path && item.element) {
       acc.push({ path: item.path, element: item.element });
     }
