@@ -80,8 +80,10 @@ const BookingDetails = () => {
         {isLoading ? (
           <LoadingUi></LoadingUi>
         ) : (
-          <div className="grid mt-10 grid-cols-1 items-center  gap-10 lg:grid-cols-2">
-            <div className="w-96 h-96 container mx-auto bg-slate-950"></div>
+          <div className="grid mt-10 px-3 mb-5 grid-cols-1 items-center  gap-10 lg:grid-cols-2">
+            <div className="w-96 h-96 container mx-auto bg-slate-950">
+              {data?.data?.facility?.photo}
+            </div>
             <div className="text-xl">
               <div>
                 <span className="font-semibold">Facility Name: </span>

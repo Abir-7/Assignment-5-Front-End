@@ -15,7 +15,9 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "bg-slate-100 text-black px-3 py-2 rounded" : "px-3 py-2"
+            isActive
+              ? "bg-slate-100 text-black px-3 py-2 rounded"
+              : "px-3 py-2 z-10 text-white"
           } // Apply styles based on active state
         >
           Home
@@ -38,7 +40,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "bg-slate-100 text-black px-3 py-2 rounded"
-                : "px-3 py-2"
+                : "px-3 py-2 "
             } // Apply styles based on active state
           >
             Dashboard
@@ -89,7 +91,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow bg-slate-950 lg:hidden"
+            className="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow bg-slate-950 lg:hidden"
           >
             {navLinks}
           </ul>
