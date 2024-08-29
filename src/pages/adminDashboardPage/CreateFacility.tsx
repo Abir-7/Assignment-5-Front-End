@@ -9,17 +9,13 @@ import { toast } from "sonner";
 const CreateFacility = () => {
   const [createFacility] = useCreateFacilityMutation();
   const onFormSubmit = async (data: FieldValues) => {
-    console.log(data);
     const res = (await createFacility({
       ...data,
       pricePerHour: Number(data.pricePerHour),
     })) as IRespone<any>;
-    console.log(res);
+
     if (res?.data) {
       toast.success(res.data.message);
-    }
-    if (res?.error) {
-      toast.success(res.error.data.message);
     }
   };
   return (
@@ -53,6 +49,12 @@ const CreateFacility = () => {
             errorMsg="Location is Requierd"
             name="location"
             label="Location"
+            type="text"
+          ></Input>{" "}
+          <Input
+            errorMsg={false}
+            name="photo"
+            label="Image Link:(optional)"
             type="text"
           ></Input>
           <button type="submit" className="btn btn-sm mt-4">

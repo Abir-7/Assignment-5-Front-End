@@ -11,15 +11,17 @@ const SignupPage = () => {
   const navigate = useNavigate();
   const [createUser] = useCreateUserMutation();
   const onFormSubmit = async (data: FieldValues) => {
-    console.log(data);
-
     const { password, ...remaindata } = data;
 
     const res = (await createUser({
       password,
-      customer: { ...remaindata, phone: Number(remaindata.phone) },
+      customer: {
+        ...remaindata,
+        phone: Number(remaindata.phone),
+        email: data?.email?.toLowerCase(),
+      },
     })) as IRespone<any>;
-    console.log(res);
+
     if (res?.data) {
       toast.success(res.data.message);
       navigate("/login");

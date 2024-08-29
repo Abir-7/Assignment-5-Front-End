@@ -9,7 +9,7 @@ const Facilities = () => {
   const limit = 4;
   // Fetch facilities from the API
   const { data } = useGetAllFacilityQuery({ page: currentPage, limit });
-  console.log(data);
+
   // Define the state for search and price filtering
   const [searchQuery, setSearchQuery] = useState("");
   const [minPrice, setMinPrice] = useState<number>(0);

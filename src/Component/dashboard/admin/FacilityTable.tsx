@@ -53,13 +53,13 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
     }
   };
   const [deleteFacility, { error }] = useDeleteFacilityMutation();
-  console.log(error);
+
   const handleDelete = async () => {
     if (facilityId == null) {
       toast.success("facility not found. Try again.");
     } else {
       const res = (await deleteFacility({ id: facilityId })) as IRespone<any>;
-      console.log(facilityId);
+
       if (res?.data) {
         toast.success(res.data.message);
       }
@@ -120,7 +120,7 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
             <Input
               label="Image"
               type="text"
-              name="image"
+              name="photo"
               errorMsg={false}
             ></Input>
             <button className="btn mt-5 btn-warning btn-sm" type="submit">

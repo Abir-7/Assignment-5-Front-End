@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { Facility } from "../../pages/FacilityPage/facility.interface";
 
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+
 const Card = ({ info }: { info: Facility }) => {
   return (
     <div className="card bg-slate-950 w-80 shadow-xl">
       <figure>
-        <img className="" src={info?.photo} />
+        <img className="w-80 h-80 object-cover" src={info?.photo} />
       </figure>
       <div className="card-body text-white">
         <h2 className="card-title">
@@ -32,6 +35,19 @@ const Card = ({ info }: { info: Facility }) => {
           <Link to={`/faiclity/${info?._id}`} className="btn btn-sm w-full">
             View Details
           </Link>
+          {info?.averageRating && (
+            <div className="flex w-3/4 items-center ">
+              {" "}
+              <p className="text-white text-sm font-semibold">
+                Avarage Rating:
+              </p>
+              <Rating
+                style={{ maxWidth: 80 }}
+                value={info?.averageRating}
+                readOnly
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

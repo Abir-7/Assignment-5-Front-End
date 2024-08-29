@@ -8,13 +8,13 @@ import Timeline from "../../Component/Homepage/Timeline";
 import { useGetTopFacilityQuery } from "../../redux/Api/FacilityApi/facilityApi";
 
 const Homepage = () => {
-  const { data, error } = useGetTopFacilityQuery("");
-  console.log(data, error);
+  const { data } = useGetTopFacilityQuery("");
+
   return (
     <div>
       <Banner />
       <SectionHeder text={"Featured Facilities"}></SectionHeder>
-      <div className="grid gap-5 justify-items-center md:grid-cols-2 lg:grid-cols-3 my-5 ">
+      <div className=" p-2 grid md:grid-cols-2 gap-10 justify-items-center lg:grid-cols-3 xl:grid-cols-4 my-5 ">
         {data?.data.map((item: any, i: string) => (
           <Card key={i} info={item}></Card>
         ))}

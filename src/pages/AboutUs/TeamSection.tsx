@@ -9,15 +9,24 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
+    name: "Jane Smith",
+    role: "CTO",
+    image:
+      "https://img.freepik.com/free-vector/purple-man-with-blue-hair_24877-82003.jpg?t=st=1724943029~exp=1724946629~hmac=fec457b58631989a0a4bc978c87c57a3d57fe56f991eaffa41f66141fb1daf2a&w=740",
+    bio: "Jane is a tech visionary with a background in software engineering and a love for cutting-edge technology.",
+  },
+  {
     name: "John Doe",
     role: "CEO",
-    image: "path/to/image1.jpg",
+    image:
+      "https://img.freepik.com/free-vector/purple-man-with-blue-hair_24877-82003.jpg?t=st=1724943029~exp=1724946629~hmac=fec457b58631989a0a4bc978c87c57a3d57fe56f991eaffa41f66141fb1daf2a&w=740",
     bio: "John has over 20 years of experience in the industry and is passionate about innovation and leadership.",
   },
   {
     name: "Jane Smith",
     role: "CTO",
-    image: "path/to/image2.jpg",
+    image:
+      "https://img.freepik.com/free-vector/purple-man-with-blue-hair_24877-82003.jpg?t=st=1724943029~exp=1724946629~hmac=fec457b58631989a0a4bc978c87c57a3d57fe56f991eaffa41f66141fb1daf2a&w=740",
     bio: "Jane is a tech visionary with a background in software engineering and a love for cutting-edge technology.",
   },
   // Add more team members as needed

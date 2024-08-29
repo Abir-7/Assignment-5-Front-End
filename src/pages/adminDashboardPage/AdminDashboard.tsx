@@ -24,9 +24,6 @@ const AdminDashboard = () => {
         <div className="w-60 rounded-xl h-32 bg-slate-950 text-white text-xl font-semibold flex justify-center items-center">
           <div>
             <Link to="/admin/manage-facilities">Manage Facilities</Link>
-            <div className="flex justify-center pt-3">
-              <p className="text-green-500">1</p>
-            </div>
           </div>
         </div>
       </div>

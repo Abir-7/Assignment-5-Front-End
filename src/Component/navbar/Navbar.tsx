@@ -45,7 +45,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
-      <li>
+      {/* <li>
         <NavLink
           to="/about-us"
           className={({ isActive }) =>
@@ -64,7 +64,7 @@ const Navbar = () => {
         >
           Contact Us
         </NavLink>
-      </li>
+      </li> */}
     </>
   );
   return (

@@ -7,4 +7,5 @@ export interface Facility {
   photo: string;
   _id: string;
   __v: number;
+  averageRating?: number;
 }

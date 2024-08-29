@@ -12,16 +12,14 @@ import { useCreateAdminMutation } from "../../redux/Api/createUserApi/creatUserA
 const CreateAdmin = () => {
   const [createAdmin] = useCreateAdminMutation();
   const onFormSubmit = async (data: FieldValues) => {
-    console.log(data);
-
     const { password, ...adminData } = data;
 
     const newObject = {
       password: password,
-      admin: adminData,
+      admin: { ...adminData, email: adminData?.email.toLowerCase() },
     };
     const res = (await createAdmin(newObject)) as IRespone<any>;
-    console.log(res);
+
     if (res?.data) {
       toast.success(res.data.message);
     }

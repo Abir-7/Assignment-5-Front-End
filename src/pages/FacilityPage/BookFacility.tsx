@@ -29,7 +29,6 @@ const BookFacility = () => {
 
     if (res?.data) {
       toast.success(res?.data?.message);
-      console.log(res.data.data);
 
       window.location.href = res.data.data.payLink;
     }
