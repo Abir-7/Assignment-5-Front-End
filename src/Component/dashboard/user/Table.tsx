@@ -56,7 +56,7 @@ const Table = ({ data }: { data: Booking[] }) => {
                 Yes
               </button>
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-smhover:text-white hover:text-white hover:bg-slate-900 bg-slate-950 border-none">
+              <button className="btn btn-sm  text-white hover:bg-slate-900 bg-slate-950 border-none">
                 Cencel
               </button>
             </form>
@@ -101,7 +101,8 @@ const Table = ({ data }: { data: Booking[] }) => {
                       modal?.showModal();
                       setBookingId(item._id);
                     }}
-                    className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
+                    className="btn btn-sm text-white 
+                    hover:bg-slate-900 bg-slate-950 border-none"
                     disabled={item.isBooked === "canceled"}
                   >
                     Cancel

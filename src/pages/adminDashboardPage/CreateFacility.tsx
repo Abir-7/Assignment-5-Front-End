@@ -57,7 +57,10 @@ const CreateFacility = () => {
             label="Image Link:(optional)"
             type="text"
           ></Input>
-          <button type="submit" className="btn btn-sm mt-4">
+          <button
+            type="submit"
+            className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none mt-4"
+          >
             Create
           </button>
         </Form>

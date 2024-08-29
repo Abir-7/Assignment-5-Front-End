@@ -3,12 +3,16 @@ import { useGetAllFacilityQuery } from "../../redux/Api/FacilityApi/facilityApi"
 import SectionHeder from "../../Component/common/SectionHeder";
 import Card from "../../Component/common/Card";
 import { Facility } from "./facility.interface";
+import LoadingUi from "../../Component/Loding/LoadingUi";
 
 const Facilities = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const limit = 4;
   // Fetch facilities from the API
-  const { data } = useGetAllFacilityQuery({ page: currentPage, limit });
+  const { data, isLoading } = useGetAllFacilityQuery({
+    page: currentPage,
+    limit,
+  });
 
   // Define the state for search and price filtering
   const [searchQuery, setSearchQuery] = useState("");
@@ -119,11 +123,15 @@ const Facilities = () => {
       </div>
 
       {/* Display filtered facilities */}
-      <div className="p-2 grid md:grid-cols-2 gap-10 justify-items-center lg:grid-cols-3 xl:grid-cols-4">
-        {filteredData.map((item: Facility) => (
-          <Card key={item._id} info={item} />
-        ))}
-      </div>
+      {isLoading ? (
+        <LoadingUi></LoadingUi>
+      ) : (
+        <div className="p-2 grid md:grid-cols-2 gap-10 justify-items-center lg:grid-cols-3 xl:grid-cols-4">
+          {filteredData.map((item: Facility) => (
+            <Card key={item._id} info={item} />
+          ))}
+        </div>
+      )}
       <div className="flex justify-center mt-4">
         <button
           onClick={() => handlePageChange(currentPage - 1)}

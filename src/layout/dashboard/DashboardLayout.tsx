@@ -37,9 +37,22 @@ const DashboardLayout = () => {
       <div className="drawer-content   ">
         <label
           htmlFor="my-drawer-2"
-          className=" absolute flex justify-center items-center h-10 w-10 rounded-md bg-red-300 left-0 me-auto lg:hidden"
+          className=" absolute flex justify-center items-center h-8 w-8 rounded-md bg-slate-950 border top-2 left-2 me-auto lg:hidden text-white font-bold"
         >
-          {">"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
         </label>
         <div className="">
           <Outlet></Outlet>

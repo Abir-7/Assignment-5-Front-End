@@ -1,8 +1,9 @@
 import { FacilityTable } from "../../Component/dashboard/admin/FacilityTable";
+import LoadingUi from "../../Component/Loding/LoadingUi";
 import { useGetAllFacilityQuery } from "../../redux/Api/FacilityApi/facilityApi";
 
 const ManageFacilities = () => {
-  const { data } = useGetAllFacilityQuery("");
+  const { data, isLoading } = useGetAllFacilityQuery("");
 
   return (
     <>
@@ -12,7 +13,11 @@ const ManageFacilities = () => {
         </div>
       </div>
 
-      <FacilityTable data={data?.data}></FacilityTable>
+      {isLoading ? (
+        <LoadingUi></LoadingUi>
+      ) : (
+        <FacilityTable data={data?.data}></FacilityTable>
+      )}
     </>
   );
 };
