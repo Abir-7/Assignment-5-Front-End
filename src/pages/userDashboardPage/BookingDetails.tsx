@@ -82,7 +82,11 @@ const BookingDetails = () => {
         ) : (
           <div className="grid mt-10 px-3 mb-5 grid-cols-1 items-center  gap-10 lg:grid-cols-2">
             <div className="w-96 h-96 container mx-auto bg-slate-950">
-              {data?.data?.facility?.photo}
+              <img
+                className="w-96 h-96"
+                src={data?.data?.facility?.photo}
+                alt=""
+              />
             </div>
             <div className="text-xl">
               <div>
