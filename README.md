@@ -44,9 +44,22 @@ The **Sports Facility Booking Platform** is a web application designed to simpli
 ## Installation
 
 To run the project locally, follow these steps:
-   don't forget to create .env file
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/sports-facility-booking.git
    cd sports-facility-booking
+   git clone https://github.com/yourusername/sports-facility-booking.git
    run npm install
+2. **Create .env**:
+   ```bash
+      MONGODB_URI=
+      NODE_ENV=
+      PORT=
+      BCRYPT_SAULT_ROUND=
+      JWT_SECRETE_KEY=
+      JWT_SECRETE_DATE=
+      # amar pay
+      Store_ID=
+      Signature_Key=
+      Api_EndPoint=
+
+      
