@@ -118,7 +118,7 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
               errorMsg={false}
             ></Input>
             <button
-              className="btn mt-5 hover:text-white hover:bg-slate-900 bg-slate-950  border-none btn-sm"
+              className="btn mt-5 text-white hover:bg-slate-900 bg-slate-950  border-none btn-sm"
               type="submit"
             >
               Update

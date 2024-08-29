@@ -33,7 +33,7 @@ const ContactForm = () => {
           errorMsg="Message Requierd"
           label="Message"
         ></TextAria>
-        <button className="btn btn-sm mt-5 hover:text-white hover:bg-slate-900 bg-slate-950 border-none">
+        <button className="btn btn-sm mt-5 text-white hover:bg-slate-900 bg-slate-950 border-none">
           Submit
         </button>
       </Form>

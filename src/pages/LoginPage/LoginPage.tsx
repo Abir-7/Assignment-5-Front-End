@@ -50,7 +50,7 @@ const LoginPage = () => {
               ></Input>
 
               <button
-                className="btn btn-sm w-full hover:text-white hover:bg-slate-900 bg-slate-950 border-none mt-5"
+                className="btn btn-sm w-full text-white hover:bg-slate-900 bg-slate-950 border-none mt-5"
                 type="submit"
               >
                 Comfirm

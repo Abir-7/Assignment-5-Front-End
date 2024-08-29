@@ -81,7 +81,7 @@ const SignupPage = () => {
                 type="text"
               ></Input>
               <button
-                className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none mt-4 w-full"
+                className="btn btn-sm text-white hover:bg-slate-900 bg-slate-950 border-none mt-4 w-full"
                 type="submit"
               >
                 Create Account

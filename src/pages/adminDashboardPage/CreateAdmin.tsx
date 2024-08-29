@@ -89,7 +89,7 @@ const CreateAdmin = () => {
               name="gender"
             ></SelectInput>
             <button
-              className="btn w-full btn-sm mt-5 hover:text-white hover:bg-slate-900 bg-slate-950 border-none "
+              className="btn w-full btn-sm mt-5 text-white hover:bg-slate-900 bg-slate-950 border-none "
               type="submit"
             >
               Comfirm

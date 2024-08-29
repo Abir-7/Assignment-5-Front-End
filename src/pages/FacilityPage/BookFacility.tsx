@@ -94,7 +94,7 @@ const BookFacility = () => {
                       ></InputWithState>
                       <div className="flex flex-col ">
                         <button
-                          className="my-5 btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
+                          className="my-5 btn btn-sm text-white hover:bg-slate-900 bg-slate-950 border-none"
                           type="submit"
                         >
                           Confirm
@@ -103,7 +103,7 @@ const BookFacility = () => {
                     </Form>
                     <button
                       onClick={() => checkAvailableTime()}
-                      className="my-5 w-full btn relative btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
+                      className="my-5 w-full btn relative btn-sm text-white hover:bg-slate-900 bg-slate-950 border-none"
                       type="submit"
                     >
                       Check Availability{" "}
