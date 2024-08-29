@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { logout } from "../feature/userSlice/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api",
+  baseUrl: "https://assignment-5-back-end-tawny.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, api) => {
     const { token } = (api.getState() as RootState).authData;

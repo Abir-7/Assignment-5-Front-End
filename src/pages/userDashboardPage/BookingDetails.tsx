@@ -30,11 +30,8 @@ const BookingDetails = () => {
       rating,
       comment,
     })) as IRespone<any>;
-    if (res.data) {
+    if (res?.data) {
       toast.success(res.data.message);
-    }
-    if (res.error) {
-      toast.success(res.error.data.message);
     }
   };
 
@@ -66,12 +63,14 @@ const BookingDetails = () => {
                 <button
                   disabled={rating === 0 || comment === ""}
                   onClick={() => handleSubmit()}
-                  className="btn btn-sm"
+                  className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
                 >
                   Yes
                 </button>
                 {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-sm">Cencel</button>
+                <button className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none">
+                  Cencel
+                </button>
               </form>
             </div>
           </div>
@@ -132,7 +131,7 @@ const BookingDetails = () => {
                 ) as HTMLDialogElement | null;
                 modal?.showModal();
               }}
-              className="btn  mt-2 btn-sm"
+              className="btn  mt-2 btn-sm btn-warning"
             >
               Give Review
             </button>

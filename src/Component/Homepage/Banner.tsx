@@ -1,4 +1,3 @@
-import React from "react";
 import taenis from "../../assets/image/tanis.jpg";
 import badminton from "../../assets/image/badminton.jpeg";
 import football from "../../assets/image/football.jpg";

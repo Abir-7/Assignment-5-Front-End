@@ -18,14 +18,12 @@ const LoginPage = () => {
   const onFormSubmit = async (data: FieldValues) => {
     const res = (await userLogin(data)) as IRespone<IAuthData>;
 
-    if (res.data?.success) {
+    if (res?.data?.success) {
       toast.success(res.data.message);
       const tokenData = decodeToken(res.data.data.token);
 
       dispatch(setUser({ user: tokenData, token: res.data.data.token }));
       navigate("/");
-    } else {
-      toast.success(res.error?.data.message);
     }
   };
   return (
@@ -52,7 +50,7 @@ const LoginPage = () => {
               ></Input>
 
               <button
-                className="btn btn-sm w-full bg-slate-950 text-white mt-5"
+                className="btn btn-sm w-full hover:text-white hover:bg-slate-900 bg-slate-950 border-none mt-5"
                 type="submit"
               >
                 Comfirm

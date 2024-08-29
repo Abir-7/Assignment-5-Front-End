@@ -128,7 +128,7 @@ const Facilities = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="btn btn-sm"
+          className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
         >
           Previous
         </button>
@@ -138,7 +138,7 @@ const Facilities = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === data?.meta?.totalPage}
-          className="btn btn-sm"
+          className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
         >
           Next
         </button>

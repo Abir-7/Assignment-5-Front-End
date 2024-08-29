@@ -1,4 +1,3 @@
-import React from "react";
 import { BookingTable } from "../../Component/dashboard/admin/BookingTable";
 
 const ViewAllBooking = () => {

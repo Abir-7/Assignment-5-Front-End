@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+
 import Form from "../../Component/form/Form";
 import Input from "../../Component/form/Input";
 import { FieldValues } from "react-hook-form";
@@ -22,9 +22,6 @@ const CreateAdmin = () => {
 
     if (res?.data) {
       toast.success(res.data.message);
-    }
-    if (res?.error) {
-      toast.success(res.error.data.message);
     }
   };
 
@@ -91,7 +88,10 @@ const CreateAdmin = () => {
               errorMsg="Gender is required"
               name="gender"
             ></SelectInput>
-            <button className="btn w-full btn-sm mt-5" type="submit">
+            <button
+              className="btn w-full btn-sm mt-5 hover:text-white hover:bg-slate-900 bg-slate-950 border-none "
+              type="submit"
+            >
               Comfirm
             </button>
           </Form>

@@ -94,7 +94,9 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">DreamSprots</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          DreamSprots
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-10 px-1">{navLinks}</ul>

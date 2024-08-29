@@ -26,9 +26,6 @@ const SignupPage = () => {
       toast.success(res.data.message);
       navigate("/login");
     }
-    if (res?.error) {
-      toast.success(res.error.data.message);
-    }
   };
 
   return (
@@ -83,7 +80,10 @@ const SignupPage = () => {
                 name="address"
                 type="text"
               ></Input>
-              <button className="btn btn-sm mt-4 w-full" type="submit">
+              <button
+                className="btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none mt-4 w-full"
+                type="submit"
+              >
                 Create Account
               </button>
             </Form>

@@ -1,14 +1,12 @@
-import React from "react";
-
 const NewsLetter = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-slate-950 bg=slate-950 mb-2">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-md sm:text-center">
-          <h2 className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white">
+          <h2 className="mb-4 text-3xl tracking-tight font-extrabold  sm:text-4xl text-white">
             Sign up for our newsletter
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
+          <p className="mx-auto mb-8 max-w-2xl font-light  md:mb-12 sm:text-xl text-white">
             Stay up to date with the roadmap progress, announcements and
             exclusive discounts feel free to sign up with your email.
           </p>
@@ -17,13 +15,13 @@ const NewsLetter = () => {
               <div className="relative w-full">
                 <label
                   htmlFor="email"
-                  className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="hidden mb-2 text-sm font-medium text-white"
                 >
                   Email address
                 </label>
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <svg
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    className="w-5 h-5 text-white"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +31,7 @@ const NewsLetter = () => {
                   </svg>
                 </div>
                 <input
-                  className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-3 pl-10 w-full text-sm  bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-primary-500 dark:focus:border-primary-500 text-black"
                   placeholder="Enter your email"
                   type="email"
                   id="email"
@@ -43,7 +41,7 @@ const NewsLetter = () => {
               <div>
                 <button
                   type="submit"
-                  className="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-primary-700 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="py-3 px-5 w-full text-sm font-medium text-center bg-slate-950 text-white rounded-lg border cursor-pointer bg-primary-700  sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Subscribe
                 </button>

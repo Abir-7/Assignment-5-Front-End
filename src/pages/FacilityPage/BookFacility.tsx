@@ -32,9 +32,6 @@ const BookFacility = () => {
 
       window.location.href = res.data.data.payLink;
     }
-    if (res?.error) {
-      toast.error(res.error?.data?.message);
-    }
   };
   const [date, setDate] = useState("");
 
@@ -48,13 +45,10 @@ const BookFacility = () => {
         { name: "date", value: date },
         { name: "facility", value: facility as string },
       ])) as IRespone<any>;
-      if (res.data) {
+      if (res?.data) {
         if (res?.data?.data?.length == 0) {
           toast.error("No Time Slote Available");
         }
-      }
-      if (res.error) {
-        toast.error(res?.error?.data?.message);
       }
     }
   };
@@ -95,14 +89,17 @@ const BookFacility = () => {
                       errorMsg="Date is Required"
                     ></InputWithState>
                     <div className="flex flex-col ">
-                      <button className="my-5 btn btn-sm" type="submit">
+                      <button
+                        className="my-5 btn btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
+                        type="submit"
+                      >
                         Confirm
                       </button>
                     </div>
                   </Form>
                   <button
                     onClick={() => checkAvailableTime()}
-                    className="my-5 w-full btn relative btn-sm"
+                    className="my-5 w-full btn relative btn-sm hover:text-white hover:bg-slate-900 bg-slate-950 border-none"
                     type="submit"
                   >
                     Check Availability{" "}

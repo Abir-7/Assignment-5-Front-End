@@ -27,7 +27,7 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
   const [updateFacility] = useUpdateFacilityMutation();
   const onFormSubmit = async (data: FieldValues) => {
     const newObject = Object.fromEntries(
-      Object.entries(data).filter(([key, value]) => value !== undefined)
+      Object.entries(data).filter(([_key, value]) => value !== undefined)
     );
 
     // const newObject = {};
@@ -47,12 +47,9 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
       if (res?.data) {
         toast.success(res.data.message);
       }
-      if (res?.error) {
-        toast.success(res.error.data.message);
-      }
     }
   };
-  const [deleteFacility, { error }] = useDeleteFacilityMutation();
+  const [deleteFacility] = useDeleteFacilityMutation();
 
   const handleDelete = async () => {
     if (facilityId == null) {
@@ -62,9 +59,6 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
 
       if (res?.data) {
         toast.success(res.data.message);
-      }
-      if (res?.error) {
-        toast.success(res.error.data.message);
       }
     }
   };
@@ -123,7 +117,10 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
               name="photo"
               errorMsg={false}
             ></Input>
-            <button className="btn mt-5 btn-warning btn-sm" type="submit">
+            <button
+              className="btn mt-5 hover:text-white hover:bg-slate-900 bg-slate-950  border-none btn-sm"
+              type="submit"
+            >
               Update
             </button>
           </Form>

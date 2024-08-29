@@ -1,5 +1,3 @@
-import React from "react";
-
 const Timeline = () => {
   return (
     <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
