@@ -4,6 +4,7 @@ export interface Facility {
   location: string;
   name: string;
   pricePerHour: number;
+  photo: string;
   _id: string;
   __v: number;
 }

@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { decodeToken } from "../../utils/decodeToken";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/userSlice/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -58,6 +58,12 @@ const LoginPage = () => {
                 Comfirm
               </button>
             </Form>
+            <div className="text-sm">
+              Don't have account?{" "}
+              <Link to="/signup" className="hover:underline underline-offset-2">
+                Click here
+              </Link>
+            </div>
           </div>
         </div>
       </div>

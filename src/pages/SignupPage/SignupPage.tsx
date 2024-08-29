@@ -1,32 +1,61 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Form from "../../Component/form/Form";
 import Input from "../../Component/form/Input";
 import { FieldValues } from "react-hook-form";
-
+import { useCreateUserMutation } from "../../redux/Api/createUserApi/creatUserApi";
+import { IRespone } from "../../redux/InterfaceForRedux/apiRespone.interface";
+import { toast } from "sonner";
+import { Link, useNavigate } from "react-router-dom";
+import img from "../../assets/image/login.jpg";
 const SignupPage = () => {
+  const navigate = useNavigate();
+  const [createUser] = useCreateUserMutation();
   const onFormSubmit = async (data: FieldValues) => {
     console.log(data);
+
+    const { password, ...remaindata } = data;
+
+    const res = (await createUser({
+      password,
+      customer: { ...remaindata, phone: Number(remaindata.phone) },
+    })) as IRespone<any>;
+    console.log(res);
+    if (res?.data) {
+      toast.success(res.data.message);
+      navigate("/login");
+    }
+    if (res?.error) {
+      toast.success(res.error.data.message);
+    }
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <div className="card-body">
+    <div
+      className="hero bg-base-200 min-h-screen"
+      style={{ backgroundImage: `url(${img})` }}
+    >
+      <div className="hero-content flex-col ">
+        <div className="text-7xl my-8 text-white font-bold">Signup</div>
+        <div className="card bg-base-100 sm:w-96 md:w-[500px]  lg:w-[700px] shrink-0 shadow-2xl">
+          <div className="card-body ">
             <Form onFormSubmit={onFormSubmit}>
               <Input
                 type="text"
-                errorMsg="Name is Required."
-                label="Name"
-                name="name"
+                errorMsg="First Name is Required."
+                label="First Name"
+                name="name.firstName"
+              ></Input>
+              <Input
+                type="text"
+                errorMsg={false}
+                label="Middle Name"
+                name="name.middleName"
+              ></Input>
+              <Input
+                type="text"
+                errorMsg={"Last Name is Required"}
+                label="Last Name"
+                name="name.lastName"
               ></Input>
               <Input
                 type="text"
@@ -52,10 +81,16 @@ const SignupPage = () => {
                 name="address"
                 type="text"
               ></Input>
-              <button className="btn" type="submit">
-                Comfirm
+              <button className="btn btn-sm mt-4 w-full" type="submit">
+                Create Account
               </button>
             </Form>
+            <div className="text-sm">
+              Already have account?{" "}
+              <Link to="/login" className="hover:underline underline-offset-2">
+                Click here
+              </Link>
+            </div>
           </div>
         </div>
       </div>

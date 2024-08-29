@@ -8,10 +8,18 @@ const bookingAApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Facility"],
     }),
     getAllFacility: builder.query({
+      query: ({ page, limit }) => ({
+        url: `/facility?page=${page}&limit=${limit}`,
+        method: "GET",
+      }),
+      providesTags: ["Facility"],
+    }),
+    getTopFacility: builder.query({
       query: () => ({
-        url: "/facility",
+        url: `/facility/topFacilities`,
         method: "GET",
       }),
     }),
@@ -27,11 +35,13 @@ const bookingAApi = baseApi.injectEndpoints({
         method: "PUT",
         body: data.data,
       }),
+      invalidatesTags: ["Facility"],
     }),
     deleteFacility: builder.mutation({
       query: (data) => {
         return { url: `/facility/${data.id}`, method: "DELETE" };
       },
+      invalidatesTags: ["Facility"],
     }),
 
     checkAvailability: builder.query({
@@ -55,6 +65,7 @@ const bookingAApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Booking"],
     }),
   }),
 });
@@ -67,4 +78,5 @@ export const {
   useUpdateFacilityMutation,
   useDeleteFacilityMutation,
   useCreateFacilityMutation,
+  useGetTopFacilityQuery,
 } = bookingAApi;

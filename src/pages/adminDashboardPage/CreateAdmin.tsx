@@ -4,9 +4,10 @@ import Form from "../../Component/form/Form";
 import Input from "../../Component/form/Input";
 import { FieldValues } from "react-hook-form";
 import SelectInput from "../../Component/form/SelectInput";
-import { useCreateAdminMutation } from "../../redux/Api/createAdminApi/createAdminApi";
+
 import { IRespone } from "../../redux/InterfaceForRedux/apiRespone.interface";
 import { toast } from "sonner";
+import { useCreateAdminMutation } from "../../redux/Api/createUserApi/creatUserApi";
 
 const CreateAdmin = () => {
   const [createAdmin] = useCreateAdminMutation();

@@ -16,8 +16,14 @@ const FacilityDetails = () => {
       ) : (
         <div>
           <SectionHeder text="Facilities Details"></SectionHeder>
-          <div className="grid mt-10 grid-cols-1 justify-items-center gap-10 ">
-            <div className="w-96 h-96 container mx-auto bg-slate-950"></div>
+          <div className="grid mt-10 grid-cols-1 justify-items-center container mx-auto gap-10 ">
+            <div className="w-72 h-72 container mx-auto bg-slate-950">
+              <img
+                src={data?.data?.photo}
+                className="w-72 h-72 object-cover"
+                alt=""
+              />
+            </div>
             <div className="text-xl space-y-2">
               <div>
                 <span className="font-semibold">Facility Name: </span>
@@ -38,7 +44,7 @@ const FacilityDetails = () => {
             </div>
             <Link
               to={`/facility/${id}/booking`}
-              className="btn btn-neutral btn-sm bg-slate-950 hover:bg-slate-700 text-white"
+              className="btn btn-neutral btn-sm bg-slate-950 hover:bg-slate-700 mb-10 text-white"
             >
               Book Now
             </Link>

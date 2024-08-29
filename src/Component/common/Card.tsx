@@ -5,10 +5,7 @@ const Card = ({ info }: { info: Facility }) => {
   return (
     <div className="card bg-slate-950 w-80 shadow-xl">
       <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
-        />
+        <img className="" src={info?.photo} />
       </figure>
       <div className="card-body text-white">
         <h2 className="card-title">
@@ -26,12 +23,12 @@ const Card = ({ info }: { info: Facility }) => {
           <div className=" ">{info?.location}</div>
         </div>
         <div className="flex flex-col gap-3 ">
-          <Link
+          {/* <Link
             to={`/facility/${info?._id}/booking`}
             className="btn btn-sm w-full"
           >
             Book Now
-          </Link>
+          </Link> */}
           <Link to={`/faiclity/${info?._id}`} className="btn btn-sm w-full">
             View Details
           </Link>

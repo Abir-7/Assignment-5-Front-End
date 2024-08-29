@@ -29,7 +29,7 @@ const CreateFacility = () => {
           <div className="text-3xl font-bold">Create Facility</div>
         </div>
       </div>{" "}
-      <div className="container mx-auto mt-10">
+      <div className="container mx-auto mt-10 p-2">
         <Form onFormSubmit={onFormSubmit}>
           <Input
             errorMsg="Facility Name is Requierd"

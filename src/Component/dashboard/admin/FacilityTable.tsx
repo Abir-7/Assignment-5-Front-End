@@ -117,6 +117,12 @@ export const FacilityTable = ({ data }: { data: IData[] }) => {
               name="location"
               errorMsg={false}
             ></Input>
+            <Input
+              label="Image"
+              type="text"
+              name="image"
+              errorMsg={false}
+            ></Input>
             <button className="btn mt-5 btn-warning btn-sm" type="submit">
               Update
             </button>

@@ -14,6 +14,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUsPage from "../pages/ContactUs/ContactUsPage";
 import { adminOption } from "./adminRoute";
 import ProtectedRouteTwo from "./ProtectedRouteTwo";
+import SignupPage from "../pages/SignupPage/SignupPage";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
   },
   {
     path: "*",

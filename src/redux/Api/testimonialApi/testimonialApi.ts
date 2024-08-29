@@ -8,12 +8,14 @@ const testimonialApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Testimonial"],
     }),
     getAllTestimonial: builder.query({
       query: () => ({
         url: "/testimonial",
         method: "GET",
       }),
+      providesTags: ["Testimonial"],
     }),
   }),
 });

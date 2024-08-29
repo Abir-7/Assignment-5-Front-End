@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface IErrorData {
   data: {
     success: boolean;
@@ -15,6 +16,7 @@ interface IData<T> {
   success: boolean;
   statusCode: number;
   message: string;
+  meta?: any;
 }
 
 export interface IRespone<T> {
