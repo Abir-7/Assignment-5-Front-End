@@ -18,17 +18,21 @@ export const BookingTable = () => {
               <th>Date</th>
               <th>Start Time</th>
               <th>End Time</th>
+              <th>Payment Status</th>
+              <th>Payment Ammount</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
             {data?.data?.map((item: any, i: string) => (
               <tr key={i}>
-                <td>{item.facility.name}</td>
-                <td>{item.user.email}</td>
-                <td>{item.date}</td>
-                <td>{item.startTime}</td>
-                <td>{item.endTime}</td>
+                <td>{item?.facility.name}</td>
+                <td>{item?.user.email}</td>
+                <td>{item?.date}</td>
+                <td>{item?.startTime}</td>
+                <td>{item?.endTime}</td>
+                <td>{item?.paymentStatus}</td>
+                <td>{item?.payableAmount}</td>
               </tr>
             ))}
           </tbody>

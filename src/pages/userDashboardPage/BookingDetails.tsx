@@ -133,6 +133,11 @@ const BookingDetails = () => {
                   <span className="font-semibold">End Time: </span>
                   {data?.data?.endTime}
                 </div>
+                <div>
+                  {" "}
+                  <span className="font-semibold">Total Ammount: </span>
+                  {data?.data?.payableAmount}
+                </div>
               </div>
               <button
                 onClick={() => {
