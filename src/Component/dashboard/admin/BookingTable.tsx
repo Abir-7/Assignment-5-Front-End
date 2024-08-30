@@ -32,7 +32,11 @@ export const BookingTable = () => {
                 <td>{item?.startTime}</td>
                 <td>{item?.endTime}</td>
                 <td>{item?.paymentStatus}</td>
-                <td>{item?.payableAmount}</td>
+                <td>
+                  {" "}
+                  {Number(data?.data?.payableAmount).toFixed(2)}
+                  {"$"}
+                </td>
               </tr>
             ))}
           </tbody>

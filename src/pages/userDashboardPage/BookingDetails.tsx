@@ -136,7 +136,8 @@ const BookingDetails = () => {
                 <div>
                   {" "}
                   <span className="font-semibold">Total Ammount: </span>
-                  {data?.data?.payableAmount}
+                  {Number(data?.data?.payableAmount).toFixed(2)}
+                  {"$"}
                 </div>
               </div>
               <button
