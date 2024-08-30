@@ -34,7 +34,7 @@ export const BookingTable = () => {
                 <td>{item?.paymentStatus}</td>
                 <td>
                   {" "}
-                  {Number(data?.data?.payableAmount).toFixed(2)}
+                  {Number(item?.payableAmount).toFixed(2)}
                   {"$"}
                 </td>
               </tr>
