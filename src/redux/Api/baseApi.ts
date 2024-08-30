@@ -49,6 +49,7 @@ const customBaseQuery: BaseQueryFn<
     // }
     // console.log(data);
     api.dispatch(logout());
+    toast.success("User Logout");
   }
   return result;
 };

@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logout } from "../../redux/feature/userSlice/authSlice";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -108,6 +109,7 @@ const Navbar = () => {
           <button
             onClick={() => {
               dispatch(logout());
+              toast.success("User Logout");
             }}
             className="btn btn-sm"
           >
