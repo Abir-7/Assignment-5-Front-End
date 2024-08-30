@@ -27,11 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/facilities",
-        element: (
-          <ProtectedRouteTwo>
-            <Facilities />
-          </ProtectedRouteTwo>
-        ),
+        element: <Facilities />,
       },
       {
         path: "faiclity/:id",
