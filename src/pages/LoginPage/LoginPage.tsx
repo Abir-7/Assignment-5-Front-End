@@ -16,7 +16,10 @@ const LoginPage = () => {
   const dispatch = useAppDispatch();
   const [userLogin] = useLoginMutation();
   const onFormSubmit = async (data: FieldValues) => {
-    const res = (await userLogin(data)) as IRespone<IAuthData>;
+    const res = (await userLogin({
+      ...data,
+      email: data?.email.toLowerCase(),
+    })) as IRespone<IAuthData>;
 
     if (res?.data?.success) {
       toast.success(res.data.message);
